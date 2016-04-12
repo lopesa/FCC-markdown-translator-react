@@ -8,8 +8,41 @@ var Main = React.createClass({
     this.setState({text: e.target.value});
   },
 	getInitialState: function(){
-    return {
-      text: 'hello world from the main component'
+		return {
+      text: 'Heading \n' +
+      	'=======\n' +
+      	'\n' +
+				'Sub-heading \n' +
+				'-----------\n' +
+				'### Another deeper heading\n' +
+				'\n' +
+				'Paragraphs are separated\n' +
+				'by a blank line.\n' +
+				'\n' +
+				'Leave 2 spaces at the end of a line to do a\n' + 
+				'line break\n' +
+				'\n' +
+				'Text attributes *italic*, **bold**,\n' +
+				'`monospace`, ~~strikethrough~~ .\n' +
+				'\n' +
+				'Shopping list:\n' +
+				'\n' +
+				'  * apples\n' +
+				'  * oranges\n' +
+				'  * pears\n' +
+				'\n' +
+				'Numbered list:\n' +
+				'\n' +
+				'  1. apples\n' +
+				'  2. oranges\n' +
+				'  3. pears\n' +
+				'\n' +
+				'The rain---not the reign---in\n' +
+				'Spain.\n' +
+				'\n' +
+				' *[Tony Lopes](http://freecodecamp.com/lopesa)*\n' +
+				'\n' +
+				' *thanks to [Herman Fassett](http://freecodecamp.com/hermanfassett)* '
     }
   },
 	render: function() {

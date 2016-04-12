@@ -1,4 +1,5 @@
 var React = require('react');
+var marked = require('marked');
 
 var MarkdownV = React.createClass({
 	render: function() {
@@ -6,12 +7,11 @@ var MarkdownV = React.createClass({
 			height: '100%',
 			width: '100%'
 		};
+		var translated = marked(this.props.text);
+
 		return (
-			<textarea
-				value={this.props.text}
-				onChange={this.props.handleTextChange}
-				style={textbox} >
-			</textarea>
+			<div style={textbox} dangerouslySetInnerHTML={{__html: translated}}>
+			</div>
 		)
 	}
 });
