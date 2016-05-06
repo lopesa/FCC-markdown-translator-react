@@ -50,6 +50,7 @@
 	var ReactDOM = __webpack_require__(158);
 	var HtmlV = __webpack_require__(159);
 	var MarkdownV = __webpack_require__(160);
+	var md = __webpack_require__(162);
 
 	var Main = React.createClass({
 		displayName: 'Main',
@@ -59,7 +60,7 @@
 		},
 		getInitialState: function getInitialState() {
 			return {
-				text: 'Heading \n' + '=======\n' + '\n' + 'Sub-heading \n' + '-----------\n' + '### Another deeper heading\n' + '\n' + 'Paragraphs are separated\n' + 'by a blank line.\n' + '\n' + 'Leave 2 spaces at the end of a line to do a\n' + 'line break\n' + '\n' + 'Text attributes *italic*, **bold**,\n' + '`monospace`, ~~strikethrough~~ .\n' + '\n' + 'Shopping list:\n' + '\n' + '  * apples\n' + '  * oranges\n' + '  * pears\n' + '\n' + 'Numbered list:\n' + '\n' + '  1. apples\n' + '  2. oranges\n' + '  3. pears\n' + '\n' + 'The rain---not the reign---in\n' + 'Spain.\n' + '\n' + ' *[Tony Lopes](http://freecodecamp.com/lopesa)*\n' + '\n' + ' *thanks to [Herman Fassett](http://freecodecamp.com/hermanfassett)* '
+				text: md
 			};
 		},
 		render: function render() {
@@ -71,11 +72,16 @@
 				width: '100%'
 			};
 			var main = {
-				height: '80vh',
-				'marginTop': '50px'
+				height: '80vh'
 			};
 			var sub = {
 				height: '100%'
+			};
+			var title = {
+				color: 'white',
+				'backgroundColor': 'grey',
+				'marginBottom': '20px',
+				'paddingLeft': '5px'
 			};
 
 			return React.createElement(
@@ -83,15 +89,32 @@
 				{ className: 'container', style: main },
 				React.createElement(
 					'div',
+					{ className: 'row' },
+					React.createElement(
+						'div',
+						{ className: 'col-xs-12' },
+						React.createElement(
+							'div',
+							{ style: title },
+							React.createElement(
+								'h1',
+								null,
+								'Markdown Translator'
+							)
+						)
+					)
+				),
+				React.createElement(
+					'div',
 					{ className: 'row', style: height100 },
 					React.createElement(
 						'div',
-						{ className: 'col-sm-6', style: sub },
+						{ className: 'col-xs-6', style: sub },
 						React.createElement(HtmlV, { text: this.state.text, handleTextChange: this.handleTextChange })
 					),
 					React.createElement(
 						'div',
-						{ className: 'col-sm-6', style: sub },
+						{ className: 'col-xs-6', style: sub },
 						React.createElement(MarkdownV, { text: this.state.text, handleTextChange: this.handleTextChange })
 					)
 				)
@@ -19748,7 +19771,7 @@
 				height: '100%',
 				width: '100%'
 			};
-			var translated = marked(this.props.text);
+			var translated = marked(this.props.text, { sanitize: true });
 
 			return React.createElement('div', { style: textbox, dangerouslySetInnerHTML: { __html: translated } });
 		}
@@ -21047,6 +21070,16 @@
 	}());
 
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 162 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var md = "Heading  \n======= \n\t      \t \nSub-heading  \n----------- \n### Another deeper heading \n\t \nParagraphs are separated \nby a blank line. \n \nLeave 2 spaces at the end of a line to do a  \nline break \n \nText attributes *italic*, **bold**, \n`monospace`, ~~strikethrough~~ . \n \nCode = indent 4 spaces \n \n    npm install athing --save-dev \n \nShopping list: \n \n  * apples \n  * oranges \n  * pears \n \nNumbered list: \n \n  1. apples \n  2. oranges \n  3. pears \n\n";
+
+	module.exports = md;
 
 /***/ }
 /******/ ]);

@@ -7,7 +7,7 @@ var MarkdownV = React.createClass({
 			height: '100%',
 			width: '100%'
 		};
-		var translated = marked(this.props.text);
+		var translated = marked(this.props.text, {sanitize: true});
 
 		return (
 			<div style={textbox} dangerouslySetInnerHTML={{__html: translated}}>
